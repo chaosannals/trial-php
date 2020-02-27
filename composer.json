@@ -1,0 +1,18 @@
+{
+    "name": "chaosannals/trial-php",
+    "description": "php trial.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "common.php"
+        ]
+    },
+    "require": {}
+}
