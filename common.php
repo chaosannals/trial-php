@@ -36,3 +36,17 @@ function load_data($path)
     $text = file_get_contents($path);
     return unserialize($text);
 }
+
+function snake_to_camel($source)
+{
+    return preg_replace_callback('/_([a-z])/', function ($matches) {
+        return strtoupper($matches[1]);
+    }, $source);
+}
+
+function camel_to_snake($source)
+{
+    return preg_replace_callback('/([A-Z])/', function ($matches) {
+        return '_' . strtolower($matches[1]);
+    }, $source);
+}
