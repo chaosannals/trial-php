@@ -44,9 +44,33 @@ function snake_to_camel($source)
     }, $source);
 }
 
+function snake_to_kebab($source)
+{
+    return str_replace('_', '-', $source);
+}
+
 function camel_to_snake($source)
 {
     return preg_replace_callback('/([A-Z])/', function ($matches) {
         return '_' . strtolower($matches[1]);
+    }, $source);
+}
+
+function camel_to_kebab($source)
+{
+    return preg_replace_callback('/([A-Z])/', function ($matches) {
+        return '-' . strtolower($matches[1]);
+    }, $source);
+}
+
+function kebab_to_snake($source)
+{
+    return str_replace('-', '_', $source);
+}
+
+function kebab_to_camel($source)
+{
+    return preg_replace_callback('/-([a-z])/', function ($matches) {
+        return strtoupper($matches[1]);
     }, $source);
 }
