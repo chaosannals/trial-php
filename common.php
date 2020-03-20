@@ -74,3 +74,30 @@ function kebab_to_camel($source)
         return strtoupper($matches[1]);
     }, $source);
 }
+
+function in_winnt()
+{
+    return stripos(PHP_OS, 'win') !== false;
+}
+
+function get_phpinfo($what = INFO_ALL)
+{
+    ob_start();
+    phpinfo($what);
+    $info = ob_get_contents();
+    ob_end_clean();
+    return $info;
+}
+
+function get_phpini_path()
+{
+    $info = get_phpinfo(INFO_GENERAL);
+    // 匹配命令行的信息。
+    preg_match_all('/Configuration\s*File.+?=>\s*(.+?)[\r\n]/', $info, $matches);
+    foreach ($matches[1] as $path) {
+        if (stripos($path, 'php.ini') !== false) {
+            return $path;
+        }
+    }
+    return null;
+}
