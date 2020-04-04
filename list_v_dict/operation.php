@@ -41,12 +41,12 @@ timing('list_save', function () use ($la, $lb) {
     save_data(__DIR__ . '/lb.txt', $lb);
 });
 
-timing('dict_load', function () use ($da, $db) {
+timing('dict_load', function () {
     load_data(__DIR__ . '/da.txt');
     load_data(__DIR__ . '/db.txt');
 });
 
-timing('list_load', function () use ($la, $lb) {
+timing('list_load', function () {
     load_data(__DIR__ . '/la.txt');
     load_data(__DIR__ . '/lb.txt');
 });
