@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * 计算时间。
+ * 
+ */
 function timing($symbol, $callback)
 {
     $start = microtime(true);
@@ -9,6 +13,10 @@ function timing($symbol, $callback)
     return $result;
 }
 
+/**
+ * 生成随机集合数据。
+ * 
+ */
 function random_set($length, $min = 1, $max = 100000000)
 {
     $result = [];
@@ -25,18 +33,30 @@ function random_set($length, $min = 1, $max = 100000000)
     return $result;
 }
 
+/**
+ * 保存数据为序列化。
+ * 
+ */
 function save_data($path, $data)
 {
     $text = serialize($data);
     file_put_contents($path, $text);
 }
 
+/**
+ * 加载序列化的数据。
+ * 
+ */
 function load_data($path)
 {
     $text = file_get_contents($path);
     return unserialize($text);
 }
 
+/**
+ * 蛇皮转驼峰。
+ * 
+ */
 function snake_to_camel($source)
 {
     return preg_replace_callback('/_([a-z])/', function ($matches) {
@@ -44,11 +64,19 @@ function snake_to_camel($source)
     }, $source);
 }
 
+/**
+ * 蛇皮转烤串。
+ * 
+ */
 function snake_to_kebab($source)
 {
     return str_replace('_', '-', $source);
 }
 
+/**
+ * 驼峰转蛇皮。
+ * 
+ */
 function camel_to_snake($source)
 {
     return preg_replace_callback('/([A-Z])/', function ($matches) {
@@ -56,6 +84,10 @@ function camel_to_snake($source)
     }, $source);
 }
 
+/**
+ * 驼峰转烤串。
+ * 
+ */
 function camel_to_kebab($source)
 {
     return preg_replace_callback('/([A-Z])/', function ($matches) {
@@ -63,11 +95,19 @@ function camel_to_kebab($source)
     }, $source);
 }
 
+/**
+ * 烤串转蛇皮。
+ * 
+ */
 function kebab_to_snake($source)
 {
     return str_replace('-', '_', $source);
 }
 
+/**
+ * 烤串转驼峰。
+ * 
+ */
 function kebab_to_camel($source)
 {
     return preg_replace_callback('/-([a-z])/', function ($matches) {
@@ -75,11 +115,19 @@ function kebab_to_camel($source)
     }, $source);
 }
 
+/**
+ * 判断是不是 windows 系统
+ * 
+ */
 function in_winnt()
 {
     return stripos(PHP_OS, 'win') !== false;
 }
 
+/**
+ * 获取 phpinfo 的信息。
+ * 
+ */
 function get_phpinfo($what = INFO_ALL)
 {
     ob_start();
@@ -89,6 +137,9 @@ function get_phpinfo($what = INFO_ALL)
     return $info;
 }
 
+/**
+ * 命令行下获取 php.ini 路径
+ */
 function get_phpini_path()
 {
     $info = get_phpinfo(INFO_GENERAL);

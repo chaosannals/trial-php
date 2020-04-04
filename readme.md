@@ -1,1 +1,1 @@
-# [phptrial](https://github.com/chaosannals/phptrial)
+# [trial](https://github.com/chaosannals/trial-php)
