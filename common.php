@@ -115,6 +115,24 @@ function kebab_to_camel($source)
     }, $source);
 }
 
+function snake_short($text)
+{
+    preg_match_all('/^[a-z]|_[a-z]/', $text, $matches);
+    return str_replace('_', '', join($matches[0]));
+}
+
+function camel_short($text)
+{
+    preg_match_all('/^[a-zA-Z]|[A-Z]/', $text, $matches);
+    return join($matches[0]);
+}
+
+function kebab_short($text)
+{
+    preg_match_all('/^[a-z]|-[a-z]/', $text, $matches);
+    return str_replace('-', '', join($matches[0]));
+}
+
 /**
  * 判断是不是 windows 系统
  * 

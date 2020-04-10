@@ -14,5 +14,7 @@
             "common.php"
         ]
     },
-    "require": {}
+    "require": {
+        "lizhichao/word": "^1.4"
+    }
 }
