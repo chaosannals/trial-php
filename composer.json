@@ -11,7 +11,9 @@
     ],
     "autoload": {
         "files": [
-            "common.php"
+            "common.php",
+            "common_case.php",
+            "common_image.php"
         ]
     },
     "require": {
