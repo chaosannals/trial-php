@@ -13,7 +13,8 @@
         "files": [
             "common.php",
             "common_case.php",
-            "common_image.php"
+            "common_image.php",
+            "common_pdo.php"
         ]
     },
     "require": {
