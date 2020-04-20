@@ -4,8 +4,114 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b3651d100b7ce27b9eacdc4441f0b89",
+    "content-hash": "11fc3827def2d1d2279d7d5d582735a6",
     "packages": [
+        {
+            "name": "ethanhann/redis-raw",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ethanhann/redis-raw-php.git",
+                "reference": "f0173cd5cf938bf5a9f48f37a1792ca746f30f6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ethanhann/redis-raw-php/zipball/f0173cd5cf938bf5a9f48f37a1792ca746f30f6f",
+                "reference": "f0173cd5cf938bf5a9f48f37a1792ca746f30f6f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "cheprasov/php-redis-client": "^1.8",
+                "consolidation/robo": "^1.0",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "mockery/mockery": "^0.9.9",
+                "monolog/monolog": "^1.23",
+                "phpunit/phpunit": "^6.0",
+                "predis/predis": "^1.1",
+                "ukko/phpredis-phpdoc": "^2.2@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ehann\\RedisRaw\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ethan Hann",
+                    "email": "ethanhann@gmail.com"
+                }
+            ],
+            "description": "Redis/PHP connectors.",
+            "time": "2018-12-09T21:12:54+00:00"
+        },
+        {
+            "name": "ethanhann/redisearch-php",
+            "version": "1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ethanhann/redisearch-php.git",
+                "reference": "01490a47ba09e2883f07f87ee4cc00a09886e8d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ethanhann/redisearch-php/zipball/01490a47ba09e2883f07f87ee4cc00a09886e8d4",
+                "reference": "01490a47ba09e2883f07f87ee4cc00a09886e8d4",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ethanhann/redis-raw": "^0.3",
+                "php": ">=7",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "cheprasov/php-redis-client": "^1.8",
+                "consolidation/robo": "^1.0",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "mockery/mockery": "^0.9.9",
+                "monolog/monolog": "^1.23",
+                "phpunit/phpunit": "^6.0",
+                "predis/predis": "^1.1",
+                "ukko/phpredis-phpdoc": "^5.0@beta"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ehann\\RediSearch\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ethan Hann",
+                    "email": "ethanhann@gmail.com"
+                }
+            ],
+            "time": "2019-11-02T10:21:18+00:00"
+        },
         {
             "name": "lizhichao/word",
             "version": "1.4",
@@ -47,6 +153,59 @@
             ],
             "description": "This is a participle library",
             "time": "2020-01-15T06:15:28+00:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2020-03-23T09:12:05+00:00"
         }
     ],
     "packages-dev": [],

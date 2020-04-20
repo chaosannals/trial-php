@@ -18,6 +18,7 @@
         ]
     },
     "require": {
-        "lizhichao/word": "^1.4"
+        "lizhichao/word": "^1.4",
+        "ethanhann/redisearch-php": "^1.9"
     }
 }
