@@ -34,6 +34,61 @@ function random_set($length, $min = 1, $max = 100000000)
 }
 
 /**
+ * 随机多维集
+ *
+ * @param 长度 $length
+ * @param integer $n
+ * @param integer $min
+ * @param integer $max
+ * @return array
+ */
+function random_n_set($length, $n = 5, $min = 1, $max = 10)
+{
+    $result = [];
+    for ($j = 0; $j < $length; ++$j) {
+        $v = [];
+        for ($i = 0; $i < $n; ++$i) {
+            $v[] = random_int($min, $max);
+        }
+        $result[] = $v;
+    }
+    return $result;
+}
+
+/**
+ * 多维向量比对
+ *
+ * @param array $a
+ * @param array $b
+ * @param integer $n
+ * @return int
+ */
+function n_set_cmp($a, $b, $n = 5)
+{
+    for ($i = 0; $i < $n; ++$i) {
+        if ($a[$i] < $b[$i]) {
+            return -1;
+        } elseif ($a[$i] > $b[$i]) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+/**
+ * 多维集合排序
+ *
+ * @param array $n
+ * @return void
+ */
+function sort_n_set(&$set, $n = 5)
+{
+    return usort($set, function ($a, $b) use ($n) {
+        return n_set_cmp($a, $b, $n);
+    });
+}
+
+/**
  * 保存数据为序列化。
  * 
  */
