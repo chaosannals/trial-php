@@ -13,6 +13,17 @@ function timing($symbol, $callback)
     return $result;
 }
 
+function random_password($length, $set = null)
+{
+    $all = $set ?? '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-';
+    $max = strlen($all) - 1;
+    $result = [];
+    for ($i = 0; $i < $length; ++$i) {
+        $result[] = $all[random_int(0, $max)];
+    }
+    return join($result);
+}
+
 /**
  * 生成随机集合数据。
  * 
