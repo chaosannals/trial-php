@@ -6,19 +6,21 @@ use Ehann\RedisRaw\PhpRedisAdapter;
 use Ehann\RediSearch\Index;
 
 $redis = (new PhpRedisAdapter())
-    ->connect('127.0.0.1', 6379);
+    ->connect('127.0.0.1', 6380);
 
-$bookIndex = new Index($redis);
+$bookIndex = new Index($redis, 'tttt1');
 
-$result = $bookIndex->search('two');
+$result = $bookIndex->search('Charles');
 
 $count = $result->getCount();     // Number of documents.
 $docs = $result->getDocuments(); // Array of matches.
 
-// Documents are returned as objects by default.
-$firstResult = $docs[0];
-$firstResult->title;
-$firstResult->author;
+
+if ($count > 0) {
+    $firstResult = $docs[0];
+    $firstResult->title;
+    $firstResult->author;
+}
 
 var_export($count);
 var_export($docs);
