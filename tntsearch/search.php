@@ -24,5 +24,6 @@ $tnt->loadConfig([
 
 $tnt->selectIndex('name.index');
 $tnt->setTokenizer(new NameTokenizer());
+$tnt->maxDocs = PHP_INT_MAX; // 这个设置后下面才有效。
 // 不管输入多少，超过500都只有500条。10000也只有500条。
 $tntResult = $tnt->search('名词', 10000);
