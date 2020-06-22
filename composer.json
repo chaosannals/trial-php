@@ -20,6 +20,7 @@
     "require": {
         "lizhichao/word": "^1.4",
         "ethanhann/redisearch-php": "^1.9",
-        "teamtnt/tntsearch": "^2.3"
+        "teamtnt/tntsearch": "^2.3",
+        "phpseclib/phpseclib": "^2.0"
     }
 }
