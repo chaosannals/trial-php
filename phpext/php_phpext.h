@@ -6,7 +6,7 @@
 extern zend_module_entry phpext_module_entry;
 # define phpext_phpext_ptr &phpext_module_entry
 
-# define PHP_PHPEXT_VERSION "0.1.0"
+# define PHP_PHPEXT_VERSION "0.1.1"
 
 # if defined(ZTS) && defined(COMPILE_DL_PHPEXT)
 ZEND_TSRMLS_CACHE_EXTERN()

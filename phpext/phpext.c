@@ -15,13 +15,42 @@
 	ZEND_PARSE_PARAMETERS_END()
 #endif
 
+/* 类定义 */
+zend_class_entry *tester_ce;
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_tester_ctor, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_tester_test, 0, 0, 1)
+	ZEND_ARG_INFO(0, hello)
+ZEND_END_ARG_INFO()
+
+PHP_METHOD(tester, __construct)
+{
+	zend_update_property_string(tester_ce,  getThis(), "memory", sizeof("memory") - 1, "tester-memory");
+}
+
+PHP_METHOD(tester, test)
+{
+	zend_string *hello = NULL;
+	if (zend_parse_parameters(ZEND_NUM_ARGS(), "S",  &hello) == FAILURE) {
+		return;
+	}
+}
+
+const zend_function_entry tester_methods[] = {
+	PHP_ME(tester, __construct, arginfo_tester_ctor, ZEND_ACC_PUBLIC)
+	PHP_ME(tester, test, arginfo_tester_test, ZEND_ACC_PUBLIC)
+	{NULL, NULL, NULL}
+};
+
 /* {{{ void phpext_test1()
  */
 PHP_FUNCTION(phpext_test1)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	php_printf("The extension %s is loaded and working!\r\n", "phpext");
+	php_printf("The extension %s is loaded and test1!\r\n", "phpext");
 }
 /* }}} */
 
@@ -55,6 +84,15 @@ PHP_RINIT_FUNCTION(phpext)
 	return SUCCESS;
 }
 /* }}} */
+
+PHP_MINIT_FUNCTION(phpext)
+{
+	zend_class_entry ce;
+	INIT_CLASS_ENTRY(ce, "Tester", tester_methods);
+	tester_ce = zend_register_internal_class(&ce);
+	zend_declare_property_null(tester_ce, "memory", sizeof("memory") - 1, ZEND_ACC_PUBLIC);
+	return SUCCESS;
+}
 
 /* {{{ PHP_MINFO_FUNCTION
  */
@@ -91,7 +129,7 @@ zend_module_entry phpext_module_entry = {
 	STANDARD_MODULE_HEADER,
 	"phpext",					/* Extension name */
 	phpext_functions,			/* zend_function_entry */
-	NULL,							/* PHP_MINIT - Module initialization */
+	PHP_MINIT(phpext),							/* PHP_MINIT - Module initialization */
 	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
 	PHP_RINIT(phpext),			/* PHP_RINIT - Request initialization */
 	NULL,							/* PHP_RSHUTDOWN - Request shutdown */
