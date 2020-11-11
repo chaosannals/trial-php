@@ -1,0 +1,16 @@
+version: '3.8'
+
+services: 
+    # nano 服务
+    hyperf-nano-server:
+        build:
+            context: .
+            dockerfile:  dockerfile
+        image: hyperf-nano-server:0.0.3
+        container_name: hyperf-nano-server
+        restart: always
+        ports:
+            - "9051:9051"
+        volumes:
+            # - C:\path\to\nano-server:/app
+            - /path/to/nano-server:/app

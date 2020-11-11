@@ -1,0 +1,14 @@
+{
+    "name": "chaosannals/exert-hyperf-nano",
+    "description": "hyperf nano demo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "require": {
+        "hyperf/nano": "*"
+    }
+}
