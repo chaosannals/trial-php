@@ -2,15 +2,60 @@ version: '3.8'
 
 services: 
     # nano 服务
-    hyperf-nano-server:
+    exert-hyperf-nano-server:
         build:
             context: .
             dockerfile:  dockerfile
-        image: hyperf-nano-server:0.0.3
-        container_name: hyperf-nano-server
+        image: exert-hyperf-nano-server:0.0.3
+        container_name: exert-hyperf-nano-server
         restart: always
+        depends_on: 
+            - exert-hyperf-nano-redis
         ports:
             - "9051:9051"
         volumes:
-            # - C:\path\to\nano-server:/app
-            - /path/to/nano-server:/app
+            - D:\exert-hyperf-nano:/app
+            # - /path/to/nano-server:/app
+        networks: 
+            - exert-hyperf-nano-net
+        
+
+    # Redis
+    exert-hyperf-nano-redis:
+        image: redis
+        container_name: exert-hyperf-nano-redis
+        restart: always
+        volumes: 
+            - D:\exert-hyperf-nano\redis\data:/data
+            # - /path/to/redis/data:/data
+            - D:\exert-hyperf-nano\redis\conf:/etc/redis
+            # - /path/to/redis/conf:/etc/redis
+            - D:\exert-hyperf-nano\redis\mod:/mod
+            # - /path/to/redis/mod:/mod
+        entrypoint: ["redis-server", "/etc/redis/redis.conf"]
+        networks: 
+            - exert-hyperf-nano-net
+
+    # MySQL
+    exert-hyperf-nano-mysql:
+        image: mysql
+        container_name: exert-hyperf-nano-mysql
+        restart: always
+        volumes: 
+            - D:\exert-hyperf-nano\mysql\data:/var/lib/mysql
+            # - /path/to/mysql/data:/var/lib/mysql
+            - D:\exert-hyperf-nano\mysql\conf:/etc/mysql
+            # - /path/to/mysqlmysql/conf:/etc/mysql
+            - D:\exert-hyperf-nano\mysql\file:/var/lib/mysql-files
+            # - /path/to/mysqlmysql/file:/var/lib/mysql-files
+            - D:\exert-hyperf-nano\mysql\my.cnf:/etc/my.cnf
+            # - /path/to/mysqlmysql/my.cnf:/etc/my.cnf
+        environment: 
+            MYSQL_ROOT_PASSWORD=root
+        networks: 
+            - exert-hyperf-nano-net
+
+networks:
+    exert-hyperf-nano-net:
+        name: exert-hyperf-nano-net
+        driver: bridge
