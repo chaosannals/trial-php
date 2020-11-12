@@ -1,11 +1,11 @@
 <?php return [
     'default' => [
-        'host' => env('REDIS_HOST', 'localhost'),
-        'auth' => env('REDIS_AUTH', ''),
-        'port' => (int) env('REDIS_PORT', 6379),
-        'db' => (int) env('REDIS_DB', 0),
+        'host' => env('redis_host', 'exert-hyperf-nano-redis'),
+        'auth' => env('redis_auth', ''),
+        'port' => (int) env('redis_port', 6379),
+        'db' => (int) env('redis_db', 0),
         'cluster' => [
-            'enable' => (bool) env('REDIS_CLUSTER_ENABLE', false),
+            'enable' => (bool) env('redis_cluster_enable', false),
             'name' => null,
             'seeds' => [],
         ],
@@ -15,7 +15,7 @@
             'connect_timeout' => 10.0,
             'wait_timeout' => 3.0,
             'heartbeat' => -1,
-            'max_idle_time' => (float) env('REDIS_MAX_IDLE_TIME', 60),
+            'max_idle_time' => (float) env('redis_max_idle_time', 60),
         ],
     ],
 ];

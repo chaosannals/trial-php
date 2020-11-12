@@ -15,6 +15,7 @@
     },
     "require": {
         "hyperf/nano": "*",
-        "hyperf/logger": "*"
+        "hyperf/logger": "*",
+        "hyperf/redis": "^2.0"
     }
 }
