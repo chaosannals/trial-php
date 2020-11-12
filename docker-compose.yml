@@ -45,13 +45,14 @@ services:
             - D:\exert-hyperf-nano\mysql\data:/var/lib/mysql
             # - /path/to/mysql/data:/var/lib/mysql
             - D:\exert-hyperf-nano\mysql\conf:/etc/mysql
-            # - /path/to/mysqlmysql/conf:/etc/mysql
+            # - /path/to/mysql/conf:/etc/mysql
             - D:\exert-hyperf-nano\mysql\file:/var/lib/mysql-files
-            # - /path/to/mysqlmysql/file:/var/lib/mysql-files
+            # - /path/to/mysql/file:/var/lib/mysql-files
             - D:\exert-hyperf-nano\mysql\my.cnf:/etc/my.cnf
-            # - /path/to/mysqlmysql/my.cnf:/etc/my.cnf
+            # - /path/to/mysql/my.cnf:/etc/my.cnf
         environment: 
-            MYSQL_ROOT_PASSWORD=root
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: exert
         networks: 
             - exert-hyperf-nano-net
 
