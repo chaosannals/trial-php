@@ -6,7 +6,6 @@ services:
         build:
             context: .
             dockerfile:  dockerfile
-        image: exert-hyperf-nano-server:0.0.3
         container_name: exert-hyperf-nano-server
         restart: always
         depends_on: 
