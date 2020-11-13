@@ -2,6 +2,7 @@
 
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use exert\Application;
+use exert\Crypter;
 use exert\Log;
 use exert\Redis;
 use exert\Db;
@@ -32,6 +33,10 @@ $app->get('/', function () {
             CONCAT('Tester-', LPAD(COUNT(*) + 1, 6 , '0'))
         FROM e_tester;");
     $testers = Db::get('default')->query("SELECT * FROM e_tester");
+
+    $crypter = new Crypter('12412341234123');
+    $e = $crypter->encrypt('qwertyuiop');
+    $d = $crypter->decrypt($e);
     return [
         'message' => "hello {$user}",
         'method' => $method,
@@ -39,6 +44,8 @@ $app->get('/', function () {
         'conf' => config('redis'),
         'rks' => $rks,
         'testers' => $testers,
+        'e' => $e,
+        'd' => $d,
     ];
 });
 
