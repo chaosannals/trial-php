@@ -11,10 +11,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "exert\\": "main"
+            "exert\\": "main",
+            "common\\": "/common"
         }
     },
     "require": {
-        "swlib/saber": "*"
+        "swlib/saber": "*",
+        "monolog/monolog": "*"
     }
 }

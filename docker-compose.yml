@@ -22,6 +22,7 @@ services:
       - swoole-http-server
     volumes: 
       - ./httpcli/:/app
+      - ./common/:/common
     networks: 
       - exert-swoole-net
 

@@ -14,5 +14,7 @@
             "exert\\": "main"
         }
     },
-    "require": {}
+    "require": {
+        "monolog/monolog": "*"
+    }
 }
