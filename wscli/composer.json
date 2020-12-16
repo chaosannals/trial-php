@@ -15,6 +15,7 @@
         }
     },
     "require": {
+        "swlib/saber": "*",
         "monolog/monolog": "*"
     }
 }
