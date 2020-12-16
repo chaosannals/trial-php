@@ -1,6 +1,6 @@
 <?php
 
-$server = new Swoole\Server("127.0.0.1", 9503);
+$server = new Swoole\Server("0.0.0.0", 9503);
 
 $server->on('connect', function ($server, $fd){
     echo "connection open: {$fd}\n";
