@@ -1,0 +1,20 @@
+{
+    "name": "chaosannals/exert-swoole-httpcli",
+    "type": "project",
+    "license": "MIT",
+    "description": "swoole http client",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "exert\\": "main"
+        }
+    },
+    "require": {
+        "swlib/saber": "*"
+    }
+}

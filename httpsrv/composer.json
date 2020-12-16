@@ -1,0 +1,18 @@
+{
+    "name": "chaosannals/exert-swoole-httpsrv",
+    "type": "project",
+    "license": "MIT",
+    "description": "swoole http server",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "exert\\": "main"
+        }
+    },
+    "require": {}
+}
