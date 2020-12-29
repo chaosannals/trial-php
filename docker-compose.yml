@@ -13,8 +13,7 @@ services:
         ports:
             - "9051:9051"
         volumes:
-            - D:\exert-hyperf-nano:/app
-            # - /path/to/nano-server:/app
+            - ./:/app
         networks: 
             - exert-hyperf-nano-net
         
@@ -25,12 +24,9 @@ services:
         container_name: exert-hyperf-nano-redis
         restart: always
         volumes: 
-            - D:\exert-hyperf-nano\redis\data:/data
-            # - /path/to/redis/data:/data
-            - D:\exert-hyperf-nano\redis\conf:/etc/redis
-            # - /path/to/redis/conf:/etc/redis
-            - D:\exert-hyperf-nano\redis\mod:/mod
-            # - /path/to/redis/mod:/mod
+            - ./redis/data:/data
+            - ./redis/conf:/etc/redis
+            - ./redis/mod:/mod
         entrypoint: ["redis-server", "/etc/redis/redis.conf"]
         networks: 
             - exert-hyperf-nano-net
@@ -41,17 +37,14 @@ services:
         container_name: exert-hyperf-nano-mysql
         restart: always
         volumes: 
-            - D:\exert-hyperf-nano\mysql\data:/var/lib/mysql
-            # - /path/to/mysql/data:/var/lib/mysql
-            - D:\exert-hyperf-nano\mysql\conf:/etc/mysql
-            # - /path/to/mysql/conf:/etc/mysql
-            - D:\exert-hyperf-nano\mysql\file:/var/lib/mysql-files
-            # - /path/to/mysql/file:/var/lib/mysql-files
-            - D:\exert-hyperf-nano\mysql\my.cnf:/etc/my.cnf
-            # - /path/to/mysql/my.cnf:/etc/my.cnf
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/conf:/etc/mysql:ro
+            - ./mysql/file:/var/lib/mysql-files
+            - ./mysql/my.cnf:/etc/my.cnf:ro
         environment: 
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: exert
+            - MYSQL_ROOT_PASSWORD="root"
+            - MYSQL_DATABASE="exert"
+            - TZ="Asia/shanghai"
         networks: 
             - exert-hyperf-nano-net
 

@@ -1,11 +1,12 @@
-FROM phpswoole/swoole:4.5.7-php7.4
+FROM phpswoole/swoole:4.5.10-php7.4
 
 WORKDIR /app
 VOLUME ["/app"]
 EXPOSE 9051
 
 COPY ./launch /
-RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ && \
+RUN cp /usr/share/zoneinfo/PRC /etc/localtime && \
+    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ && \
     cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini && \
     echo -e "\nswoole.use_shortname = 'Off'\n" >> /usr/local/etc/php/php.ini && \
     docker-php-ext-install pdo_mysql && \
