@@ -1,0 +1,61 @@
+version: '3.8'
+
+services: 
+  # PHP CGI 服务器
+  cgi-server:
+    build: 
+      context: ./server
+      dockerfile: dockerfile
+    container_name: exert-thinkphp6-cgi-server
+    depends_on: 
+      - redis
+    volumes: 
+      - ./server:/tp6 # 和 nginx 的路径一样减少路径对应的操作
+    networks:
+      - exert-thinkphp6-net
+  
+  # Nginx 服务器
+  http-server:
+    image: nginx
+    container_name: exert-thinkphp6-http-server
+    depends_on: 
+      - cgi-server
+    ports: 
+      - "10080:80"
+    volumes: 
+      - ./nginx:/ngx
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./server:/tp6 # 和 cgi 的路径一样减少路径对应的操作
+    networks: 
+      - exert-thinkphp6-net
+  
+  # Redis
+  redis:
+    image: redis:6.0.9
+    container_name: exert-thinkphp6-redis
+    volumes: 
+      - ./redis/data:/data
+      - ./redis/conf:/etc/redis
+      - ./redis/mod:/mod
+    command: redis-server /etc/redis/redis.conf
+    networks:
+      - exert-thinkphp6-net
+  
+  # MySQL
+  mysql:
+    image: mysql:8.0.22
+    container_name: exert-thinkphp6-mysql
+    volumes: 
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/file:/var/lib/mysql-files
+      - ./mysql/conf:/etc/mysql:ro
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=exert
+    networks:
+        - exert-thinkphp6-net
+
+networks: 
+  exert-thinkphp6-net:
+    name: exert-thinkphp6-net
+    driver: bridge
