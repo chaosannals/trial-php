@@ -9,6 +9,8 @@ services:
     container_name: exert-thinkphp6-cgi-server
     depends_on: 
       - redis
+      - mysql
+    restart: always
     volumes: 
       - ./server:/tp6 # 和 nginx 的路径一样减少路径对应的操作
     networks:
@@ -20,6 +22,7 @@ services:
     container_name: exert-thinkphp6-http-server
     depends_on: 
       - cgi-server
+    restart: always
     ports: 
       - "10080:80"
     volumes: 
@@ -33,6 +36,7 @@ services:
   redis:
     image: redis:6.0.9
     container_name: exert-thinkphp6-redis
+    restart: always
     volumes: 
       - ./redis/data:/data
       - ./redis/conf:/etc/redis
@@ -45,6 +49,7 @@ services:
   mysql:
     image: mysql:8.0.22
     container_name: exert-thinkphp6-mysql
+    restart: always
     volumes: 
       - ./mysql/data:/var/lib/mysql
       - ./mysql/file:/var/lib/mysql-files
