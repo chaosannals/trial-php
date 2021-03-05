@@ -2,7 +2,7 @@
 
 namespace app\controller;
 
-use app\BaseController;
+use app\basic\BaseController;
 use app\attribute\Permission;
 
 #[Permission(Permission::TOLERANT, 'sign')]
