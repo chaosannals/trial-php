@@ -10,3 +10,10 @@
 > regex:                        0.0002100468s
 > regex for:                    0.0152218342s
 > regex:                        0.0000269413s
+
+以下是（php 8.0.1 不带 xdebug）执行结果：
+> explode:                      0.0000100136s
+> explode for:                  0.0067451000s
+> regex:                        0.0001418591s
+> regex for:                    0.0045640469s
+> regex:                        0.0000081062s
