@@ -1,0 +1,21 @@
+{
+    "name": "demo/par",
+    "description": "phar",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Demo\\Par\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "rmccue/requests": "^2.0"
+    }
+}
