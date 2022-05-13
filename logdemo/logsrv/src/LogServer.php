@@ -6,6 +6,8 @@ use Exception;
 
 class LogServer
 {
+    const CRYPT_METHOD = 'aes-256-cbc';
+
     private $host;
     private $port;
     private $sock;
@@ -14,6 +16,7 @@ class LogServer
     {
         $this->host = $host;
         $this->port = $port;
+        $this->ivlen = openssl_cipher_iv_length(self::CRYPT_METHOD);
         $this->sock = socket_create(AF_INET, SOCK_DGRAM, 0);
         if ($this->sock === false) {
             $errorcode = socket_last_error();
@@ -34,20 +37,33 @@ class LogServer
         $remotePort = null;
         while (true) {
             $r = @socket_recvfrom(
-                $this->sock, $buf, 1024, 0,
+                $this->sock, $buffer, 1024, 0,
                 $remoteIp, $remotePort
             );
             if ($r > 0 and !empty($remoteIp)) {
-                $now = date('Y-m-d H:i:s');
-                extract(unpack("Vkl/Vfnl/Vil", $buf));
-                $key = substr($buf, 12, $kl);
-                $filename = substr($buf, 12 + $kl, $fnl);
-                $input = substr($buf, 12 + $kl + $fnl, $il);
+                [$key, $now, $filename, $input] = $this->decrypt($buffer);
                 echo "[$now] $remoteIp:$remotePort -- $key $filename $input".PHP_EOL;
                 $remoteIp = null;
                 $remotePort = null;
-                $buf = null;
+                $buffer = null;
             }
         }
+    }
+
+    public function decrypt($b) {
+        extract(unpack("Vkl/a{$this->ivlen}iv/Et/a32hmac", $b));
+        $key = substr($b, 60, $kl);
+        $pass = 'bbb'; // TODO 账号管理
+        $r = substr($b, 60 + $kl);
+        $d = openssl_decrypt($r, self::CRYPT_METHOD, $pass, OPENSSL_RAW_DATA, $iv);
+        $nhmac = hash_hmac('sha256', $r, $pass, true);
+        if (strcmp($nhmac, $hmac) != 0) {
+            var_export(base64_encode($nhmac).'      '.base64_encode($hmac));
+            return [$key, $t, null, null];
+        }
+        extract(unpack('Eit/Vfnl/Vil', $d));
+        $filename = substr($d, 16, $fnl);
+        $input = substr($d, 16 + $fnl);
+        return [$key, $it, $filename, $input];
     }
 }
