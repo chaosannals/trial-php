@@ -4,7 +4,7 @@ namespace Demo\Logcli;
 
 class LogPacker
 {
-    const PACK_MAX_SIZE = 500 - 72 - 31 - 16; // 最后的 16 给 AES 对齐预留
+    const PACK_MAX_SIZE = 500 - 72 - 8 - 16; // 最后的 16 给 AES 对齐预留
     const CRYPT_METHOD = 'aes-256-cbc';
 
     private $key;
@@ -25,7 +25,7 @@ class LogPacker
         $kl = strlen($this->key);
         $fnl = strlen($filename);
         $il = strlen($input);
-        $all = str_split($filename . $input, self::PACK_MAX_SIZE - $kl);
+        $all = str_split($filename . $input, self::PACK_MAX_SIZE - $idl - $kl);
         $pc = count($all);
         $rs = [];
         foreach ($all as $i => $v) {

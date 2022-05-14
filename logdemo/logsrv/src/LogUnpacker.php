@@ -8,21 +8,33 @@ class LogUnpacker
 
     private $packs;
     private $ivlen;
+    private $accounts;
 
-    public function __construct()
+    public function __construct(LogAccounts $accounts)
     {
         $this->packs = [];
         $this->ivlen = openssl_cipher_iv_length(self::CRYPT_METHOD);
+        $this->accounts = $accounts;
     }
 
     public function unpack($pack)
     {
-        extract(unpack("Vpc/Vkl/Vfnl/Vil/a{$this->ivlen}iv/Et/a32hmac/a*b", $pack));
+        $up1 = @unpack("Vpc/Vkl/Vfnl/Vil/a{$this->ivlen}iv/Et/a32hmac/a*b", $pack);
+        if ($up1 === false) {
+            return [null, null, null, null, null, null];
+        }
+        extract($up1);
         $key = substr($b, 0, $kl);
-        $pass = 'bbb';
+        $pass = $this->accounts->getPass($key);
         $r = substr($b, $kl);
+
         $d = openssl_decrypt($r, self::CRYPT_METHOD, $pass, OPENSSL_RAW_DATA, $iv);
-        extract(unpack("Vi/Vidl/a*idnv", $d));
+
+        $up2 = @unpack("Vi/Vidl/a*idnv", $d);
+        if ($up2 === false) {
+            return [$key, $t, $pc, null, null, null];
+        }
+        extract($up2);
         $nhmac = hash_hmac('sha256', $r, $pass, true);
         if (strcmp($nhmac, $hmac) != 0) {
             echo base64_encode($nhmac) . '   ' . base64_encode($hmac) . PHP_EOL;
@@ -30,6 +42,8 @@ class LogUnpacker
         }
         $id = substr($idnv, 0, $idl);
         $v = substr($idnv, $idl);
+
+        // 单个包
         if ($pc == 1) {
             $filename = substr($v, 0, $fnl);
             $input = substr($v, $fnl);
