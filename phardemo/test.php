@@ -6,3 +6,5 @@ use Demo\Par\DemoClient;
 
 $dc = new DemoClient();
 $dc->call();
+$dc->doSome();
+// $dc->doByErrorDir();
