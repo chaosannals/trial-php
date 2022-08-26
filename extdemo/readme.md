@@ -2,6 +2,8 @@
 
 ## 编译
 
+### Linux
+
 ```sh
 cd /phpext/phpext
 phpize
