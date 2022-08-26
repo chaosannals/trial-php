@@ -1,17 +1,5 @@
 # [trial](https://github.com/chaosannals/trial-php)
 
-## 镜像
-
-```sh
-docker build -t phpext .
-```
-
-## 容器
-
-```sh
-docker run -itd -p 19000:9000 -v /host/path:/phpext --name phpext-fpm phpext
-```
-
 ## Nginx
 
 ```nginx
@@ -49,23 +37,4 @@ http {
         }
     }
 }
-```
-
-## 编译
-
-```sh
-cd /phpext/phpext
-phpize
-./configure
-make
-make install
-```
-
-```sh
-cat /usr/local/etc/php/php.ini-development > /usr/local/etc/php/php.ini
-echo "\nextension=phpext.so" >> /usr/local/etc/php/php.ini
-```
-
-```ini
-extension=phpext.so
 ```
