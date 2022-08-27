@@ -33,11 +33,15 @@ git clean -xfd
 
 执行完 phpsdk-vs16-x64.bat 正常后编译环境就被配置好了，进入可以编译的命令状态。
 
-执行 phpsdk_buildtree phpmaster 选定构建
+执行 phpsdk_buildtree phpmaster 选定构建目录，不过我这个源码没按官方流程放这目录，放外面了。
 转到 php-src（需要拉去 php 源码） 目录
 下载依赖 phpsdk_deps --update --branch master 或者 phpsdk_deps --update --branch X.Y
 执行编译 buildconf && configure --enable-cli && nmake (有自己的扩展要放到源码 ext 目录下，然后 configure 添加 --enable-目录名 的配置, --enable-目录名=shared 是dll，不然被链接进 php.exe) 这一步很麻烦，因为扩展源码被放 php-src 目录下了，不利于项目管理，linux phpize 就不会有这个问题。
 
+```bash
+# 去掉线程安全
+configure --disable-zts
+```
 
 
 ### Linux
