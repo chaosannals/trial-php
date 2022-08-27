@@ -15,6 +15,8 @@
 3. 编译完后通过 git clean 清理
 
 ```powershell
+git checkout -b v2.2.0 php-sdk-2.2.0
+
 $env:VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"
 
 git clean -xfd
