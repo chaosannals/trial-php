@@ -15,6 +15,7 @@
 3. 编译完后通过 git clean 清理
 4. 如果源码都拉好，也可以一步到位，例如 C:\php-sdk\phpsdk-vc15-x64.bat -cur_console:d:C:\php-sdk\php72\vc15\x64\php-src 把路径指定好。（未试）
 5. 有时候编译报错，可能编译工具和源码版本的问题，切换几个试试。
+6. 从 buildconf 开始如果要改配置，最好把生成物目录删了，不然报错。
 
 ```powershell
 git checkout -b v2.2.0 php-sdk-2.2.0
