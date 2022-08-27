@@ -17,11 +17,15 @@
 ```powershell
 $env:VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"
 
-git clean -xnfd
+git clean -xfd
 ```
 
 执行完 phpsdk-vs16-x64.bat 正常后编译环境就被配置好了，进入可以编译的命令状态。
 
+执行 phpsdk_buildtree phpmaster 选定构建
+转到 php-src（需要拉去 php 源码） 目录
+下载依赖 phpsdk_deps --update --branch master 或者 phpsdk_deps --update --branch X.Y
+执行编译 buildconf && configure --enable-cli && nmake
 
 
 ### Linux
