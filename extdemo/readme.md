@@ -12,10 +12,12 @@
 注意事向：
 1. VS 默认的 VSINSTALLDIR 环境变量可能最后没有反斜杠，要补上，不然 phpsdk-vs16-x64.bat 路径拼接有问题。
 2. 目前 php 只支持 vs2019 如果装了 vs2022 VSINSTALLDIR 会指向 vs2022 所以需要执行脚本前执行修改这个环境变量。
-
+3. 编译完后通过 git clean 清理
 
 ```powershell
 $env:VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"
+
+git clean -xnfd
 ```
 
 执行完 phpsdk-vs16-x64.bat 正常后编译环境就被配置好了，进入可以编译的命令状态。

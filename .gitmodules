@@ -1,0 +1,6 @@
+[submodule "extdemo/php-sdk-binary-tools"]
+	path = extdemo/php-sdk-binary-tools
+	url = git@github.com:php/php-sdk-binary-tools.git
+[submodule "extdemo/php-src"]
+	path = extdemo/php-src
+	url = git@github.com:php/php-src.git
