@@ -21,6 +21,12 @@ git checkout -b v2.2.0 php-sdk-2.2.0
 
 $env:VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"
 
+phpsdk-vs16-x64.bat
+
+buildconf
+configure --enable-cli --enable-phpext
+nmake
+
 git clean -xfd
 ```
 
@@ -29,7 +35,8 @@ git clean -xfd
 执行 phpsdk_buildtree phpmaster 选定构建
 转到 php-src（需要拉去 php 源码） 目录
 下载依赖 phpsdk_deps --update --branch master 或者 phpsdk_deps --update --branch X.Y
-执行编译 buildconf && configure --enable-cli && nmake
+执行编译 buildconf && configure --enable-cli && nmake (有自己的扩展要放到源码 ext 目录下，然后 configure 添加 --enable-目录名 的配置) 这一步很麻烦，因为扩展源码被放 php-src 目录下了，不利于项目管理，linux phpize 就不会有这个问题。
+
 
 
 ### Linux
