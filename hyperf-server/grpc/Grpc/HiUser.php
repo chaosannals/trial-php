@@ -21,6 +21,10 @@ class HiUser extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 sex = 2;</code>
      */
     protected $sex = 0;
+    /**
+     * Generated from protobuf field <code>bytes file = 3;</code>
+     */
+    protected $file = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class HiUser extends \Google\Protobuf\Internal\Message
      *
      *     @type string $name
      *     @type int $sex
+     *     @type string $file
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class HiUser extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->sex = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bytes file = 3;</code>
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Generated from protobuf field <code>bytes file = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setFile($var)
+    {
+        GPBUtil::checkString($var, False);
+        $this->file = $var;
 
         return $this;
     }

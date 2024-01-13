@@ -11,7 +11,7 @@ class HiClient extends BaseClient
     public function sayHello(HiUser $argument)
     {
         return $this->_simpleRequest(
-            '/grpc.hi/sayHello',
+            '/grpc.Hi/SayHello',
             $argument,
             [HiReply::class, 'decode']
         );

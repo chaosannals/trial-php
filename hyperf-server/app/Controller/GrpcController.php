@@ -6,6 +6,8 @@ use App\Grpc\HiClient;
 use Grpc\HiUser;
 
 class GrpcController extends AbstractController {
+
+    // 9501 client
     public function hello()
     {
         // 这个client是协程安全的，可以复用
@@ -15,6 +17,7 @@ class GrpcController extends AbstractController {
     
         $request = new HiUser();
         $request->setName('hyperf');
+        $request->setFile(file_get_contents(__FILE__));
         $request->setSex(1);
     
         /**

@@ -10,6 +10,7 @@ service Hi {
 message HiUser {
     string name = 1;
     int32 sex = 2;
+    bytes file = 3;
 }
 
 message HiReply {

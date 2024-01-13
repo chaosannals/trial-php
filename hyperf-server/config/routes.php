@@ -20,7 +20,7 @@ Router::get('/favicon.ico', function () {
 });
 
 Router::addServer('grpc', function () {
-    Router::addGroup('/grpc.hi', function () {
-        Router::post('/sayHello', 'App\Controller\HiController@sayHello');
+    Router::addGroup('/grpc.Hi', function () {
+        Router::post('/SayHello', 'App\Controller\HiController@sayHello');
     });
 });
