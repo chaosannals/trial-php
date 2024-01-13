@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88f2a4d4a4e81dc7d415bcdf39930654",
+    "content-hash": "e3f5423a41345fa07d22a05b8da20a6a",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -291,6 +291,102 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
+        },
+        {
+            "name": "google/common-protos",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/common-protos-php.git",
+                "reference": "57d4ad36cc48cc0369123042908013ef2a86bb98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/57d4ad36cc48cc0369123042908013ef2a86bb98",
+                "reference": "57d4ad36cc48cc0369123042908013ef2a86bb98",
+                "shasum": ""
+            },
+            "require": {
+                "google/protobuf": "^3.6.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.36||^8.5",
+                "sami/sami": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Api\\": "src/Api",
+                    "Google\\Iam\\": "src/Iam",
+                    "Google\\Rpc\\": "src/Rpc",
+                    "Google\\Type\\": "src/Type",
+                    "Google\\Cloud\\": "src/Cloud",
+                    "GPBMetadata\\Google\\Api\\": "metadata/Api",
+                    "GPBMetadata\\Google\\Iam\\": "metadata/Iam",
+                    "GPBMetadata\\Google\\Rpc\\": "metadata/Rpc",
+                    "GPBMetadata\\Google\\Type\\": "metadata/Type",
+                    "GPBMetadata\\Google\\Cloud\\": "metadata/Cloud",
+                    "GPBMetadata\\Google\\Logging\\": "metadata/Logging"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Google API Common Protos for PHP",
+            "homepage": "https://github.com/googleapis/common-protos-php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "issues": "https://github.com/googleapis/common-protos-php/issues",
+                "source": "https://github.com/googleapis/common-protos-php/tree/v3.2.0"
+            },
+            "time": "2023-01-12T16:51:46+00:00"
+        },
+        {
+            "name": "google/protobuf",
+            "version": "v3.25.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protocolbuffers/protobuf-php.git",
+                "reference": "83ea4c147718666ce6a9b9332ac2aa588c9211eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/83ea4c147718666ce6a9b9332ac2aa588c9211eb",
+                "reference": "83ea4c147718666ce6a9b9332ac2aa588c9211eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.0.0"
+            },
+            "suggest": {
+                "ext-bcmath": "Need to support JSON deserialization"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Protobuf\\": "src/Google/Protobuf",
+                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "proto library for PHP",
+            "homepage": "https://developers.google.com/protocol-buffers/",
+            "keywords": [
+                "proto"
+            ],
+            "support": {
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.25.2"
+            },
+            "time": "2024-01-09T22:12:32+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2106,6 +2202,211 @@
             "time": "2023-11-24T03:10:53+00:00"
         },
         {
+            "name": "hyperf/grpc",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/grpc.git",
+                "reference": "0acecce9c89c3065dfcd750208586adb1ee513bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/grpc/zipball/0acecce9c89c3065dfcd750208586adb1ee513bc",
+                "reference": "0acecce9c89c3065dfcd750208586adb1ee513bc",
+                "shasum": ""
+            },
+            "require": {
+                "google/common-protos": "^3.2",
+                "google/protobuf": "^3.6.1",
+                "php": ">=8.1"
+            },
+            "suggest": {
+                "ext-protobuf": "For better performance, install the protobuf C extension."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\Grpc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A GRPC basic library for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "gRPC",
+                "hyperf",
+                "php",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
+            "name": "hyperf/grpc-client",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/grpc-client.git",
+                "reference": "3b5906f5187d92e6464295f7ab051d1d58b74dca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/grpc-client/zipball/3b5906f5187d92e6464295f7ab051d1d58b74dca",
+                "reference": "3b5906f5187d92e6464295f7ab051d1d58b74dca",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/code-parser": "~3.1.0",
+                "hyperf/context": "~3.1.0",
+                "hyperf/contract": "~3.1.0",
+                "hyperf/coroutine": "~3.1.0",
+                "hyperf/event": "~3.1.0",
+                "hyperf/grpc": "~3.1.0",
+                "jean85/pretty-package-versions": "^1.2|^2.0",
+                "php": ">=8.1"
+            },
+            "suggest": {
+                "hyperf/load-balancer": "Use LoadBalancer for GrpcTransporter.(~3.0.0)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\GrpcClient\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\GrpcClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A GRPC Client for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "gRPC",
+                "grpc-client",
+                "hyperf",
+                "php",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-12-12T07:37:26+00:00"
+        },
+        {
+            "name": "hyperf/grpc-server",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/grpc-server.git",
+                "reference": "2eba8f87b4c9d02c364611d292c7d0a31d7dc135"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/grpc-server/zipball/2eba8f87b4c9d02c364611d292c7d0a31d7dc135",
+                "reference": "2eba8f87b4c9d02c364611d292c7d0a31d7dc135",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/di": "~3.1.0",
+                "hyperf/grpc": "~3.1.0",
+                "hyperf/http-message": "~3.1.0",
+                "hyperf/http-server": "~3.1.0",
+                "hyperf/serializer": "~3.1.0",
+                "hyperf/support": "~3.1.0",
+                "hyperf/utils": "~3.1.0",
+                "php": ">=8.1",
+                "swow/psr7-plus": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\GrpcServer\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\GrpcServer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A GRPC Server for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "gRPC",
+                "grpc-server",
+                "hyperf",
+                "php",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-12-11T03:14:01+00:00"
+        },
+        {
             "name": "hyperf/guzzle",
             "version": "v3.1.0",
             "source": {
@@ -3232,6 +3533,65 @@
                 }
             ],
             "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
+            "name": "jean85/pretty-package-versions",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jean85/pretty-package-versions.git",
+                "reference": "ae547e455a3d8babd07b96966b17d7fd21d9c6af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jean85/pretty-package-versions/zipball/ae547e455a3d8babd07b96966b17d7fd21d9c6af",
+                "reference": "ae547e455a3d8babd07b96966b17d7fd21d9c6af",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2.0.0",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "jean85/composer-provided-replaced-stub-package": "^1.0",
+                "phpstan/phpstan": "^0.12.66",
+                "phpunit/phpunit": "^7.5|^8.5|^9.4",
+                "vimeo/psalm": "^4.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jean85\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Lai",
+                    "email": "alessandro.lai85@gmail.com"
+                }
+            ],
+            "description": "A library to get pretty versions strings of installed dependencies",
+            "keywords": [
+                "composer",
+                "package",
+                "release",
+                "versions"
+            ],
+            "support": {
+                "issues": "https://github.com/Jean85/pretty-package-versions/issues",
+                "source": "https://github.com/Jean85/pretty-package-versions/tree/2.0.5"
+            },
+            "time": "2021-10-08T21:21:46+00:00"
         },
         {
             "name": "laminas/laminas-mime",
