@@ -1,5 +1,13 @@
 # exert hyperf
 
+```bash
+# swoole
+composer create-project hyperf/hyperf-skeleton demo
+
+# swow
+composer create-project hyperf/swow-skeleton demo
+```
+
 ## 开发容器
 
 ```bash
