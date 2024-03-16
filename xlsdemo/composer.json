@@ -1,0 +1,19 @@
+{
+    "name": "chaosannals/xlsdemo",
+    "description": "excel demo.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "ChaosAnnals\\Xlsdemo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^2.0"
+    }
+}
