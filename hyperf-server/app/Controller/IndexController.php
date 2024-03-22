@@ -24,4 +24,11 @@ class IndexController extends AbstractController
             'message' => "Hello {$user}.",
         ];
     }
+
+    public function sayIp() {
+        // TODO 不想搞 PHP
+        $p = $this->request->getServerParams();
+        file_put_contents('php://stdout', var_export($p, true));
+        return "Ok";
+    }
 }
