@@ -1,0 +1,20 @@
+{
+    "name": "chaosannals/exert-swoole-tcpsrv",
+    "type": "project",
+    "license": "MIT",
+    "description": "swoole tcp server",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "exert\\": "main"
+        }
+    },
+    "require": {
+        "monolog/monolog": "*"
+    }
+}

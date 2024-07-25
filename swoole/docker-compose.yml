@@ -1,0 +1,107 @@
+version: '3.8'
+
+services: 
+  swoole-http-server:
+    build: 
+      context: ./httpsrv
+      dockerfile: dockerfile
+    container_name: swoole-http-server
+    ports: 
+      - "9501:9501"
+    volumes: 
+      - ./httpsrv/:/app
+    networks: 
+      - exert-swoole-net
+
+  swoole-http-client:
+    build: 
+      context: ./httpcli
+      dockerfile: dockerfile
+    container_name: swoole-http-client
+    depends_on: 
+      - swoole-http-server
+    volumes: 
+      - ./httpcli/:/app
+      - ./common/:/common
+    networks: 
+      - exert-swoole-net
+
+
+  swoole-ws-server:
+    build: 
+      context: ./wssrv
+      dockerfile: dockerfile
+    container_name: swoole-ws-server
+    ports: 
+      - "9502:9502"
+    volumes: 
+      - ./wssrv/:/app
+    networks: 
+      - exert-swoole-net
+
+  swoole-ws-client:
+    build: 
+      context: ./wscli
+      dockerfile: dockerfile
+    container_name: swoole-ws-client
+    depends_on: 
+      - swoole-ws-server
+    volumes: 
+      - ./wscli/:/app
+    networks: 
+      - exert-swoole-net
+
+
+  swoole-tcp-server:
+    build:
+      context: ./tcpsrv
+      dockerfile: dockerfile
+    container_name: swoole-tcp-server
+    ports: 
+      - "9503:9503"
+    volumes: 
+      - ./tcpsrv/:/app
+    networks: 
+      - exert-swoole-net
+  
+  swoole-tcp-client:
+    build: 
+      context: ./tcpcli
+      dockerfile: dockerfile
+    container_name: swoole-tcp-client
+    depends_on: 
+      - swoole-tcp-server
+    volumes: 
+      - ./tcpcli/:/app
+    networks: 
+      - exert-swoole-net
+
+
+  swoole-udp-server:
+    build: 
+      context: ./udpsrv
+      dockerfile: dockerfile
+    container_name: swoole-udp-server
+    ports: 
+      - "9504:9504"
+    volumes: 
+      - ./udpsrv/:/app
+    networks: 
+      - exert-swoole-net
+  
+  swoole-udp-client:
+    build: 
+      context: ./udpcli
+      dockerfile: dockerfile
+    container_name: swoole-udp-client
+    depends_on: 
+      - swoole-udp-server
+    volumes: 
+      - ./udpcli/:/app
+    networks: 
+      - exert-swoole-net
+
+networks: 
+  exert-swoole-net:
+    name: exert-swoole-net
+    driver: bridge

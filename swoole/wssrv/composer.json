@@ -1,0 +1,20 @@
+{
+    "name": "chaosannals/exert-swoole-wssrv",
+    "type": "project",
+    "license": "MIT",
+    "description": "swoole websocket server",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "exert\\": "main"
+        }
+    },
+    "require": {
+        "monolog/monolog": "*"
+    }
+}

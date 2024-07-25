@@ -1,0 +1,20 @@
+{
+    "name": "chaosannals/exert-swoole-udpcli",
+    "type": "project",
+    "license": "MIT",
+    "description": "swoole udp client",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "exert\\": "main"
+        }
+    },
+    "require": {
+        "monolog/monolog": "*"
+    }
+}
