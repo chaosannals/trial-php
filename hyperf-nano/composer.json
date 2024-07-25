@@ -1,0 +1,23 @@
+{
+    "name": "chaosannals/exert-hyperf-nano",
+    "description": "hyperf nano demo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "exert\\": "main"
+        }
+    },
+    "require": {
+        "hyperf/nano": "*",
+        "hyperf/logger": "*",
+        "hyperf/redis": "^2.0",
+        "hyperf/db-connection": "^2.0",
+        "hyperf/db": "^2.0"
+    }
+}

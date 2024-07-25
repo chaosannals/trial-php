@@ -1,0 +1,54 @@
+version: '3.8'
+
+services: 
+    # nano 服务
+    exert-hyperf-nano-server:
+        build:
+            context: .
+            dockerfile:  dockerfile
+        container_name: exert-hyperf-nano-server
+        restart: always
+        depends_on: 
+            - exert-hyperf-nano-redis
+        ports:
+            - "9051:9051"
+        volumes:
+            - ./:/app
+        networks: 
+            - exert-hyperf-nano-net
+        
+
+    # Redis
+    exert-hyperf-nano-redis:
+        image: redis
+        container_name: exert-hyperf-nano-redis
+        restart: always
+        volumes: 
+            - ./redis/data:/data
+            - ./redis/conf:/etc/redis
+            - ./redis/mod:/mod
+        entrypoint: ["redis-server", "/etc/redis/redis.conf"]
+        networks: 
+            - exert-hyperf-nano-net
+
+    # MySQL
+    exert-hyperf-nano-mysql:
+        image: mysql
+        container_name: exert-hyperf-nano-mysql
+        restart: always
+        volumes: 
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/conf:/etc/mysql:ro
+            - ./mysql/file:/var/lib/mysql-files
+            - ./mysql/my.cnf:/etc/my.cnf:ro
+        environment: 
+            - MYSQL_ROOT_PASSWORD="root"
+            - MYSQL_DATABASE="exert"
+            - TZ="Asia/shanghai"
+        networks: 
+            - exert-hyperf-nano-net
+
+networks:
+    exert-hyperf-nano-net:
+        name: exert-hyperf-nano-net
+        driver: bridge

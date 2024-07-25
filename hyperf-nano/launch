@@ -1,0 +1,5 @@
+#!/bin/bash
+# 必须 LF 行尾序列
+
+composer install
+php app.php start
